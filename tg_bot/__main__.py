@@ -51,24 +51,24 @@ from tg_bot.modules.notes import private_get, lst_notes
 from tg_bot.modules.language import gs
 
 PM_START_TEXT = """
-Hi {}, my name is {}!
-I am an Anime themed group management bot with some fun extras [;)](https://telegra.ph/file/095d7e696096e21b06447.jpg)
+Hey there! My name is Aleena - I'm here to help you manage your groups! Hit /help to find out more about how to use me to my full potential.
 
-You can find the list of available commands with /help.
+Join my [news channel](https://t.me/minibotz) to get information on all the latest updates.
 """
 
-HELP_STRINGS = """
-Hey there! My name is *{}*.
-I'll be at your service take a look below to know how to use me.
-If you have any questions on how to use me, head over to @YuiiChanSupport
-*Main* commands available:
- • /start: start the bot
- • /help: PM's you this message.
- • /help <module name>: PM's you info about that module.
- • /donate: information about how to donate!
- • /settings:
-   • in PM: will send you your settings for all supported modules.
-   • in a group: will redirect you to pm, with all that chat's settings.
+HELP_STRINGS =
+Help
+
+Hey! My name is Aleena. I am a group management bot, here to help you get around and keep the order in your groups!
+I have lots of handy features, such as flood control, a warning system, a note keeping system, and even predetermined replies on certain keywords.
+
+Helpful commands:
+- /start: Starts me! You've probably already used this.
+- /help: Sends this message; I'll tell you more about myself!
+- /donate: Gives you info on how to support me and my creator.
+
+If you have any bugs or questions on how to use me, have a look at  @minibotz.
+ All commands can be used with the following: / !
 {}
 And the following:
 """.format(
@@ -77,7 +77,7 @@ And the following:
 )
 
 
-Yuii_IMG = "https://telegra.ph/file/145c818a6b4e5bc92765d.jpg"
+Yuii_IMG = ""
 
 
 IMPORTED = {}
@@ -214,29 +214,29 @@ def start(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text=gs(chat.id, "add_bot_to_group_btn"),
+                                text="Add me to your chat",
                                 url="t.me/{}?startgroup=true".format(
                                     context.bot.username
                                 ),
                             ),
                             InlineKeyboardButton(
-                                text="Help",
+                                text="",
                                 url="t.me/{}?start=help".format(context.bot.username),
                             ),
                         ],
                         [
                             InlineKeyboardButton(
-                                text=gs(chat.id, "src_btn"),
+                                text="",
                                 url="https://github.com/rshero/YuiiChan",
                             ),
                             InlineKeyboardButton(
-                                text="Try inline mode",
+                                text="",
                                 switch_inline_query_current_chat="",
                             ),
                         ],
                         [
                             InlineKeyboardButton(
-                                text=gs(chat.id, "support_chat_link_btn"),
+                                text="",
                                 url=f"https://t.me/yuiichansupport",
                             ),
                         ],
@@ -656,7 +656,7 @@ def main():
 
     else:
         log.info(
-            f"Yuii started, Using long polling. | BOT: [@{dispatcher.bot.username}]"
+            f"Aleena started, Using long polling. | BOT: [@{dispatcher.bot.username}]"
         )
         updater.start_polling(allowed_updates=Update.ALL_TYPES, timeout=15, read_latency=4, drop_pending_updates=True)
     if len(argv) not in (1, 3, 4):
@@ -668,7 +668,7 @@ def main():
 
 if __name__ == "__main__":
     kp.start()
-    log.info("[Yuii] Successfully loaded modules: " + str(ALL_MODULES))
+    log.info("[Aleena] Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
     main()
     idle()
